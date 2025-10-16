@@ -1,0 +1,136 @@
+#!/usr/bin/env node
+// XCodeBox Validator (CJS)
+// Usage:
+//   xcode validate --path <dir> --out reports/report.json [--html]
+const fs = require('fs');
+const path = require('path');
+
+const args = process.argv.slice(2);
+const cmd = args[0] || 'validate';
+const getArg = (flag, def) => {
+  const i = args.indexOf(flag);
+  return i !== -1 && args[i+1] ? args[i+1] : def;
+};
+
+if (cmd !== 'validate') {
+  console.log(`xcode validate --path <dir> --out reports/report.json [--html]`);
+  process.exit(0);
+}
+
+const target = path.resolve(getArg('--path', '.'));
+const out    = path.resolve(getArg('--out', 'reports/report.json'));
+const wantHTML = args.includes('--html');
+
+const exists = p => { try { fs.accessSync(p); return true; } catch { return false; } };
+const listFiles = (root, max=2000) => {
+  const out = [];
+  const stack = [root];
+  while (stack.length && out.length < max) {
+    const d = stack.pop();
+    let ents = [];
+    try { ents = fs.readdirSync(d, {withFileTypes:true}); } catch { continue; }
+    for (const e of ents) {
+      const fp = path.join(d, e.name);
+      if (e.isDirectory()) {
+        // skip some heavy/irrelevant dirs
+        if (['.git','node_modules','venv','.venv','dist','build','__pycache__'].includes(e.name)) continue;
+        stack.push(fp);
+      } else {
+        out.push(fp);
+      }
+    }
+  }
+  return out;
+};
+
+console.log(`🔍 Scanning ${target} ...`);
+
+const findings = [];
+const add = (id, msg, level='info') => findings.push({id, msg, level});
+
+if (exists(path.join(target, 'README.md'))) add('readme','README.md found ✅','ok');
+else add('readme-missing','README.md missing ❌','warn');
+
+if (exists(path.join(target, '.gitignore'))) add('gitignore','.gitignore found ✅','ok');
+else add('gitignore-missing','.gitignore missing ⚠️','warn');
+
+if (exists(path.join(target, '.env'))) add('env','.env present ⚠️ add to .gitignore','warn');
+
+const files = listFiles(target, 8000);
+const big = [];
+for (const f of files) {
+  try {
+    const st = fs.statSync(f);
+    if (st.size > 25 * 1024 * 1024) { // >25MB
+      big.push({file: path.relative(target, f), mb: +(st.size/1024/1024).toFixed(1)});
+    }
+  } catch {}
+}
+if (big.length) {
+  add('large-files', `Detected ${big.length} file(s) >25MB. Consider Git LFS.`, 'warn');
+}
+
+const hasPython = files.some(f => f.endsWith('.py')) || exists(path.join(target, 'requirements.txt')) || exists(path.join(target, 'pyproject.toml'));
+const hasJS = exists(path.join(target, 'package.json')) || files.some(f => f.endsWith('.ts') || f.endsWith('.js'));
+if (hasPython) add('python','Python project markers detected','info');
+if (hasJS) add('js','JS/TS project markers detected','info');
+
+// naive score
+let score = 100;
+for (const f of findings) {
+  if (f.level==='warn') score -= 8;
+}
+if (score < 0) score = 0;
+const status = score >= 70 ? 'PASS' : 'WARN';
+
+const report = {
+  project: path.basename(target),
+  root: target,
+  scanned_at: new Date().toISOString(),
+  findings,
+  large_files_sample: big.slice(0, 10),
+  score,
+  status
+};
+
+fs.mkdirSync(path.dirname(out), { recursive: true });
+fs.writeFileSync(out, JSON.stringify(report, null, 2));
+console.log(`✅ JSON report: ${out}`);
+
+// optional HTML
+if (wantHTML) {
+  const htmlPath = out.replace(/\.json$/i, '.html');
+  const html = `<!doctype html>
+<html><head><meta charset="utf-8"><title>XCodeBox Report</title>
+<style>
+body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;background:#0b1220;color:#e6edf3}
+.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:16px;margin:16px 0}
+.ok{color:#86efac}.warn{color:#fde68a}.bad{color:#fca5a5}
+h1{margin:0 0 8px 0} .muted{opacity:.7} code{background:#0f172a;padding:2px 6px;border-radius:6px}
+</style></head>
+<body>
+  <h1>🔧 XCodeBox Report</h1>
+  <div class="muted">${report.project} — ${report.scanned_at}</div>
+  <div class="card">
+    <div>Score: <b>${report.score}</b> &nbsp; Status: <b>${report.status}</b></div>
+  </div>
+  <div class="card"><h3>Findings</h3>
+    <ul>
+      ${report.findings.map(f=>`<li class="${f.level==='ok'?'ok':(f.level==='warn'?'warn':'bad')}">${f.msg}</li>`).join('')}
+    </ul>
+  </div>
+  <div class="card"><h3>Large files &gt; 25MB (sample)</h3>
+    ${report.large_files_sample.length ? `<ul>${report.large_files_sample.map(x=>`<li><code>${x.file}</code> — ${x.mb} MB</li>`).join('')}</ul>` : '<div class="muted">None</div>'}
+  </div>
+</body></html>`;
+  fs.writeFileSync(htmlPath, html);
+  console.log(`🖼  HTML report: ${htmlPath}`);
+}
+
+// pretty CLI summary
+const green = s=>`\x1b[32m${s}\x1b[0m`, yellow=s=>`\x1b[33m${s}\x1b[0m`;
+console.log(`\n${green('Summary')}: ${report.project}  score=${report.score}  status=${report.status}`);
+for (const f of findings) {
+  const line = ` - ${f.msg}`;
+  if (f.level==='warn') console.log(yellow(line)); else console.log(green(line));
+}

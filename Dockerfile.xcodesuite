@@ -1,0 +1,9 @@
+FROM node:20
+WORKDIR /app
+COPY packages/xcodebox-core ./packages/xcodebox-core
+COPY packages/mcpbox-web ./packages/mcpbox-web
+COPY packages/watcher-daemon ./packages/watcher-daemon
+COPY tools/smoke ./tools/smoke
+RUN npm i -g tsx && npm i ws yaml chokidar
+EXPOSE 8089
+CMD ["node","packages/mcpbox-web/server.js"]

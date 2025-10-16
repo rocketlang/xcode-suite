@@ -1,0 +1,49 @@
+{
+  "project": "reflexia",
+  "root": "/root/reflexia",
+  "scanned_at": "2025-10-16T12:28:34.419Z",
+  "findings": [
+    {
+      "id": "readme",
+      "msg": "README.md found ✅",
+      "level": "ok"
+    },
+    {
+      "id": "gitignore",
+      "msg": ".gitignore found ✅",
+      "level": "ok"
+    },
+    {
+      "id": "env",
+      "msg": ".env present ⚠️ add to .gitignore",
+      "level": "warn"
+    },
+    {
+      "id": "large-files",
+      "msg": "Detected 2 file(s) >25MB. Consider Git LFS.",
+      "level": "warn"
+    },
+    {
+      "id": "python",
+      "msg": "Python project markers detected",
+      "level": "info"
+    },
+    {
+      "id": "js",
+      "msg": "JS/TS project markers detected",
+      "level": "info"
+    }
+  ],
+  "large_files_sample": [
+    {
+      "file": "snapshots/reflexia-20250811-171705.zip",
+      "mb": 38.1
+    },
+    {
+      "file": "snapshots/reflexia-20250811-180104.zip",
+      "mb": 32.1
+    }
+  ],
+  "score": 84,
+  "status": "PASS"
+}

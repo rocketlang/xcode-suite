@@ -1,0 +1,9 @@
+{
+  "name": "xcodebox-core",
+  "version": "0.0.1",
+  "private": true,
+  "bin": {
+    "xcode": "bin/xcode",
+    "xcodebox": "bin/xcodebox"
+  }
+}

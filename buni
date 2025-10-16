@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+echo ">>> BUNI: copy-mode active (no hard/symlinks, TMP=$HOME/.bun/tmp)"
+export BUN_INSTALL_HARD_LINKS=0
+export BUN_INSTALL_SYMLINKS=0
+export BUN_INSTALL_COPY=1
+export TMPDIR="$HOME/.bun/tmp"
+exec "$HOME/.bun/bin/bun" "$@"

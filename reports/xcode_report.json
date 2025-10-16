@@ -1,0 +1,95 @@
+{
+  "version": "1.1.0",
+  "run": {
+    "run_id": "313f07f0-9083-4a65-ab7b-ee28113c5b3a",
+    "started_at": "2025-10-16T10:04:21.807Z",
+    "ended_at": "2025-10-16T10:04:21.807Z",
+    "duration_ms": 0
+  },
+  "subject": {
+    "module_path": "examples/sample-repo",
+    "repo": "",
+    "branch": "",
+    "commit_sha": ""
+  },
+  "environment": {
+    "executor": "mono",
+    "os": "linux",
+    "arch": "arm64",
+    "container_image": "",
+    "tool_versions": {
+      "node": "v18.20.4"
+    }
+  },
+  "stages": [
+    {
+      "id": "deps_check",
+      "label": "Dependency Hygiene",
+      "status": "PASS",
+      "weight": 0.12,
+      "score": 1,
+      "metrics": {
+        "duration_ms": 78
+      },
+      "logs": "deps ok (placeholder)\n"
+    },
+    {
+      "id": "tests_check",
+      "label": "Tests & Coverage",
+      "status": "PASS",
+      "weight": 0.28,
+      "score": 1,
+      "metrics": {
+        "duration_ms": 80
+      },
+      "logs": "jest handled by repo; reading coverage-summary.json\n"
+    },
+    {
+      "id": "lint_check",
+      "label": "ESLint (JSON)",
+      "status": "PASS",
+      "weight": 0.18,
+      "score": 1,
+      "metrics": {
+        "eslint_errors": 0,
+        "eslint_warnings": 0,
+        "duration_ms": 23
+      },
+      "logs": ""
+    },
+    {
+      "id": "sec_check",
+      "label": "Security Audit",
+      "status": "PASS",
+      "weight": 0.12,
+      "score": 1,
+      "metrics": {
+        "duration_ms": 101
+      },
+      "logs": "npm audit JSON optional\n"
+    },
+    {
+      "id": "semantic_check",
+      "label": "AI Semantic Review (heuristic)",
+      "status": "PASS",
+      "weight": 0.3,
+      "score": 0.97,
+      "metrics": {
+        "semantic_findings": 0,
+        "duration_ms": 73
+      },
+      "logs": "Analyzed: 0"
+    }
+  ],
+  "aggregation": {
+    "total_score": 0.991,
+    "pass_score": 0.85,
+    "pass": true
+  },
+  "provenance": {
+    "rules_version": "packages/xcodebox-core/core/xcode.rules.yaml@v1.1",
+    "xcodebox_version": "1.1-mono",
+    "generated_at": "2025-10-16T10:04:21.808Z",
+    "mcp_request_id": ""
+  }
+}

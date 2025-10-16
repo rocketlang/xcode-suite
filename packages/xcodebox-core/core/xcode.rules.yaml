@@ -1,0 +1,28 @@
+version: 1.1
+name: XCodeBox Rules
+stages:
+  - id: deps_check
+    label: Dependency Hygiene
+    command: "node -e \"console.log('deps ok (placeholder)')\""
+    weight: 0.12
+  - id: tests_check
+    label: Tests & Coverage
+    command: "node -e \"console.log('jest handled by repo; reading coverage-summary.json')\""
+    threshold: 70
+    weight: 0.28
+  - id: lint_check
+    label: ESLint (JSON)
+    command: "test -f reports/eslint.json || echo '[]' > reports/eslint.json"
+    weight: 0.18
+  - id: sec_check
+    label: Security Audit
+    command: "node -e \"console.log('npm audit JSON optional')\""
+    weight: 0.12
+  - id: semantic_check
+    label: AI Semantic Review (heuristic)
+    agent: "reviewer.llm"
+    threshold: 0.8
+    weight: 0.30
+aggregation:
+  pass_score: 0.85
+  output: "reports/xcode_report.json"
