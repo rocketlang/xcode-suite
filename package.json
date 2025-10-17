@@ -1,0 +1,37 @@
+{
+  "name": "xcode-framework",
+  "version": "1.0.0",
+  "description": "XCode Quality Framework - Validation and Testing for Freight Systems",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .js,.ts --fix --ignore-path .gitignore",
+    "format": "prettier --write '**/*.{js,ts,json,md,yaml,yml}'",
+    "format:check": "prettier --check '**/*.{js,ts,json,md,yaml,yml}'",
+    "test": "echo 'Test suite coming in T014' && exit 0",
+    "validate": "npm run lint && npm run format:check",
+    "prepare": "command -v husky >/dev/null 2>&1 && husky install || echo 'Husky not installed yet'"
+  },
+  "keywords": [
+    "validation",
+    "quality",
+    "testing",
+    "freight",
+    "logistics"
+  ],
+  "author": "XCode Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
+  }
+}
