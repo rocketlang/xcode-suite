@@ -43,3 +43,13 @@ temp/
 Thumbs.db
 .Spotlight-V100
 .Trashes
+# Existing project files (to be cleaned up)
+xcodesuite-mono-v1.1/
+*.pid_*
+QUICKSTART.md
+build_*.sh
+install_*.sh
+publish_repo.sh
+push_all.sh
+sync_all.sh
+xplan_*.sh

@@ -1,0 +1,193 @@
+meta: { project: "cmxbox (control & monitor xcode-suite)", version: 1, owner: "rocketlang", updated: "2025-10-16" }
+
+# E01 — Platform core
+- id: E01
+  title: "Platform core"
+- id: T001
+  title: "Bootstrap cmxbox package + bin wrappers"
+- id: T002
+  title: "Config hierarchy (env, file, flags) + schema"
+- id: T003
+  title: "State store (sqlite/flat-file) with migrations"
+- id: T004
+  title: "Task runner (queue + retries + backoff)"
+- id: T005
+  title: "Event bus (in-proc) + typed events"
+- id: T006
+  title: "Plugin loading (node require + sandbox)"
+
+# E02 — Rule engine & DSL
+- id: E02
+  title: "Rule engine & DSL"
+- id: T007
+  title: "Minimal rule DSL (when/if/then) + validator"
+- id: T008
+  title: "Rule packs (enable/disable, version tags)"
+- id: T009
+  title: "Time-window & threshold operators"
+- id: T010
+  title: "Cross-box correlation rules (join by runId)"
+- id: T011
+  title: "Rule metrics: eval time, hit rate, flake rate"
+- id: T012
+  title: "Rule profiling & flame report"
+
+# E03 — Adapters & integrations
+- id: E03
+  title: "Adapters & integrations"
+- id: T013
+  title: "Adapter: xcode validate (local CLI)"
+- id: T014
+  title: "Adapter: MCPBox HTTP /run"
+- id: T015
+  title: "Adapter: Reflexia API (8090)"
+- id: T016
+  title: "Adapter: TrackBox API (8088)"
+- id: T017
+  title: "Adapter: GitHub (gh) issues/labels"
+- id: T018
+  title: "Adapter: Slack/Telegram notifier (send-only)"
+
+# E04 — Orchestration & scheduling
+- id: E04
+  title: "Orchestration & scheduling"
+- id: T019
+  title: "Cron scheduler + jitter + concurrency caps"
+- id: T020
+  title: "Pipelines (DAG) with fan-out/fan-in"
+- id: T021
+  title: "Manual trigger with params (CLI)"
+- id: T022
+  title: "Pause/resume/skip with reason"
+- id: T023
+  title: "Timeouts & heartbeat watchdog"
+- id: T024
+  title: "Pipeline templates for common flows"
+
+# E05 — Observability & telemetry
+- id: E05
+  title: "Observability & telemetry"
+- id: T025
+  title: "Structured logging + log levels"
+- id: T026
+  title: "Metrics: Prom-style counters/gauges/hist"
+- id: T027
+  title: "Trace spans for tasks/rules/adapters"
+- id: T028
+  title: "Health endpoints + readiness"
+- id: T029
+  title: "Run catalog: list/filter, retention policy"
+- id: T030
+  title: "HTML dashboard: runs, rules, boxes"
+
+# E06 — Governance & security
+- id: E06
+  title: "Governance & security"
+- id: T031
+  title: "Secrets provider (env/file) + redaction"
+- id: T032
+  title: "Policy-as-code (who can trigger what)"
+- id: T033
+  title: "Audit log for actions & config changes"
+- id: T034
+  title: "Signed releases + checksum verify"
+- id: T035
+  title: "Sandbox subprocess (ulimits, time, mem)"
+- id: T036
+  title: "RBAC roles: viewer/operator/admin"
+
+# E07 — Self-serve UX & CLI
+- id: E07
+  title: "Self-serve UX & CLI"
+- id: T037
+  title: "CLI: cmx init/config/run/status"
+- id: T038
+  title: "TUI mode (blessed) for live runs"
+- id: T039
+  title: "Wizard: connect a new box"
+- id: T040
+  title: "Command help, completion, examples"
+- id: T041
+  title: "Quickstarts for local/dev/prod"
+- id: T042
+  title: "Docs site: concepts + how-to"
+
+# E08 — AI assistance & insights
+- id: E08
+  title: "AI assistance & insights"
+- id: T043
+  title: "Root-cause prompt pack for failed runs"
+- id: T044
+  title: "Auto-summarize daily status (per box)"
+- id: T045
+  title: "Rule explain: why fired, suggested fixes"
+- id: T046
+  title: "Anomaly detection on metrics"
+- id: T047
+  title: "Smart triage: group similar failures"
+- id: T048
+  title: "PR comment bot with findings"
+
+# E09 — Scaling & distributed
+- id: E09
+  title: "Scaling & distributed"
+- id: T049
+  title: "Remote workers via SSH/executor API"
+- id: T050
+  title: "Work queue persistence (sqlite → file)"
+- id: T051
+  title: "Shard by box/project to avoid hotspots"
+- id: T052
+  title: "Rate limits per adapter/box"
+- id: T053
+  title: "Cache of recent call results"
+- id: T054
+  title: "Back-pressure + graceful drain"
+
+# E10 — Reliability & recovery
+- id: E10
+  title: "Reliability & recovery"
+- id: T055
+  title: "Checkpoint & resume pipelines"
+- id: T056
+  title: "Snapshot config & rollback"
+- id: T057
+  title: "Chaos tests for adapters/timeouts"
+- id: T058
+  title: "Self-healing: auto-retry w/ strategy"
+- id: T059
+  title: "Dead-letter queue + requeue"
+- id: T060
+  title: "Upgrade path + migration tests"
+
+# E11 — Marketplace & plugins
+- id: E11
+  title: "Marketplace & plugins"
+- id: T061
+  title: "Plugin SDK (adapter + rule pack)"
+- id: T062
+  title: "Registry manifest format"
+- id: T063
+  title: "Install/enable/disable plugins"
+- id: T064
+  title: "Version constraints + conflicts"
+- id: T065
+  title: "Featured packs: ops, qa, data"
+- id: T066
+  title: "Example plugin: uptime checker"
+
+# E12 — Cross-box monitoring (the “muscle”)
+- id: E12
+  title: "Cross-box monitoring & action"
+- id: T067
+  title: "Heartbeat rule: MCPBox/Reflexia/TrackBox"
+- id: T068
+  title: "SLOs: success %, latency, flake by box"
+- id: T069
+  title: "Watchdog: restart unresponsive box"
+- id: T070
+  title: "Auto-open GH issue on sustained failure"
+- id: T071
+  title: "Escalation routing (Slack/Telegram)"
+- id: T072
+  title: "Weekly report: trendlines + hotspots"

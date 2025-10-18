@@ -1,0 +1,111 @@
+meta:
+  project: "wowfreight+xcode-suite"
+  version: 1
+  owner: "rocketlang"
+  updated: "2025-10-17"
+  created_by: "XPlan Smart Installer"
+
+epics:
+  - { id: E01, title: "Foundations & Repo hygiene", priority: high }
+  - { id: E02, title: "Local DX & dev env", priority: high }
+  - { id: E03, title: "API adapters & test bed", priority: medium }
+  - { id: E04, title: "XCodeSuite validators", priority: high }
+  - { id: E05, title: "Biz invariants (WowFreight)", priority: high }
+  - { id: E06, title: "Scenario runner (workflows)", priority: medium }
+  - { id: E07, title: "CI/CD & quality gates", priority: high }
+  - { id: E08, title: "Observability & reports", priority: medium }
+  - { id: E09, title: "Security & compliance", priority: high }
+  - { id: E10, title: "Data & fixtures", priority: low }
+  - { id: E11, title: "Reflexia integration", priority: low }
+  - { id: E12, title: "TrackBox integration", priority: low }
+  - { id: E13, title: "Docs, onboarding & rollout", priority: medium }
+
+tasks:
+  - { id: T001, epic: E01, title: "Create mono repo structure", owner: eng, estimate: 2h }
+  - { id: T002, epic: E01, title: "Add README.md & CONTRIBUTING.md", owner: eng, estimate: 1h }
+  - { id: T003, epic: E01, title: "Add .gitignore, .editorconfig", owner: eng, estimate: 0.5h }
+  - { id: T004, epic: E01, title: "Set node/yarn toolchain pins", owner: eng, estimate: 1h }
+  - { id: T005, epic: E01, title: "Define package.json workspaces", owner: eng, estimate: 2h }
+  - { id: T006, epic: E01, title: "Prettier + ESLint baseline", owner: eng, estimate: 2h }
+  - { id: T007, epic: E02, title: "Proot aliases (xrun/xwatch/xwfx)", owner: eng, estimate: 1h }
+  - { id: T008, epic: E02, title: "MCP dev server tmux helper", owner: eng, estimate: 2h }
+  - { id: T009, epic: E02, title: "Sync helpers & cron job", owner: eng, estimate: 3h }
+  - { id: T010, epic: E02, title: "Local report server (xopen)", owner: eng, estimate: 4h }
+  - { id: T011, epic: E03, title: "HTTP adapter baseUrl/auth/retry", owner: eng, estimate: 4h }
+  - { id: T012, epic: E03, title: "Mock adapter for offline runs", owner: eng, estimate: 3h }
+  - { id: T013, epic: E03, title: "Record/Replay harness", owner: eng, estimate: 6h }
+  - { id: T014, epic: E03, title: "Adapter contract tests", owner: qa, estimate: 4h }
+  - { id: T015, epic: E04, title: "CLI xcode validate (json/html)", owner: eng, estimate: 8h }
+  - { id: T016, epic: E04, title: "Built-in repo hygiene rules", owner: eng, estimate: 4h }
+  - { id: T017, epic: E04, title: "Large file / binary detections", owner: eng, estimate: 3h }
+  - { id: T018, epic: E04, title: "Branch naming & commit lint", owner: eng, estimate: 2h }
+  - { id: T019, epic: E04, title: "Score + pass/fail gates", owner: qa, estimate: 4h }
+  - { id: T020, epic: E04, title: "HTML report theme v1", owner: eng, estimate: 6h }
+  - { id: T021, epic: E05, title: "Invariant spec schema (YAML)", owner: eng, estimate: 4h }
+  - { id: T022, epic: E05, title: "Engine: gte / one_of / missing", owner: eng, estimate: 6h }
+  - { id: T023, epic: E05, title: "Engine: sum_equals_field", owner: eng, estimate: 4h }
+  - { id: T024, epic: E05, title: "Orders invariants v1", owner: qa, estimate: 6h }
+  - { id: T025, epic: E05, title: "Shipments invariants v1", owner: qa, estimate: 6h }
+  - { id: T026, epic: E05, title: "Invariant failure insights", owner: ai, estimate: 8h }
+  - { id: T027, epic: E06, title: "Scenario YAML schema", owner: eng, estimate: 4h }
+  - { id: T028, epic: E06, title: "Runner: steps, expect, templating", owner: eng, estimate: 8h }
+  - { id: T029, epic: E06, title: "Happy path: create→confirm→ship", owner: qa, estimate: 6h }
+  - { id: T030, epic: E06, title: "Negative: cancel rules enforced", owner: qa, estimate: 4h }
+  - { id: T031, epic: E06, title: "Permission scenarios (roles)", owner: qa, estimate: 6h }
+  - { id: T032, epic: E06, title: "Scenario crash & status reporting", owner: eng, estimate: 4h }
+  - { id: T033, epic: E07, title: "GitHub Actions: node ci matrix", owner: eng, estimate: 4h }
+  - { id: T034, epic: E07, title: "Job: xcode validate artifacts", owner: eng, estimate: 3h }
+  - { id: T035, epic: E07, title: "Quality gate: score threshold", owner: qa, estimate: 2h }
+  - { id: T036, epic: E07, title: "PR comments summary", owner: eng, estimate: 4h }
+  - { id: T037, epic: E07, title: "Nightly invariant scan", owner: ops, estimate: 4h }
+  - { id: T038, epic: E08, title: "Report index (rollups & trends)", owner: eng, estimate: 6h }
+  - { id: T039, epic: E08, title: "HTML deep-links to failing rules", owner: eng, estimate: 3h }
+  - { id: T040, epic: E08, title: "Store reports / retention", owner: ops, estimate: 4h }
+  - { id: T041, epic: E08, title: "Webhook notifier (Telegram/Slack)", owner: eng, estimate: 4h }
+  - { id: T042, epic: E08, title: "Export CSV for BI", owner: ops, estimate: 3h }
+  - { id: T043, epic: E09, title: "Secrets scanning baseline", owner: sec, estimate: 4h }
+  - { id: T044, epic: E09, title: "Dependency audit (npm audit)", owner: sec, estimate: 2h }
+  - { id: T045, epic: E09, title: "Simple SBOM export", owner: sec, estimate: 3h }
+  - { id: T046, epic: E09, title: "Access control in scenarios", owner: sec, estimate: 6h }
+  - { id: T047, epic: E10, title: "Shared fixtures (customers, SKUs)", owner: qa, estimate: 4h }
+  - { id: T048, epic: E10, title: "Fixture loader util", owner: eng, estimate: 3h }
+  - { id: T049, epic: E10, title: "Synthetic data generator", owner: eng, estimate: 6h }
+  - { id: T050, epic: E10, title: "Record/replay cassette mgmt", owner: qa, estimate: 4h }
+  - { id: T051, epic: E11, title: "Reflexia base adapter & health", owner: eng, estimate: 6h }
+  - { id: T052, epic: E11, title: "Reflexia invariants v1", owner: qa, estimate: 6h }
+  - { id: T053, epic: E11, title: "Reflexia scenarios v1", owner: qa, estimate: 6h }
+  - { id: T054, epic: E11, title: "Reflexia pipeline job + gate", owner: eng, estimate: 4h }
+  - { id: T055, epic: E12, title: "TrackBox base adapter & health", owner: eng, estimate: 6h }
+  - { id: T056, epic: E12, title: "TrackBox invariants v1", owner: qa, estimate: 6h }
+  - { id: T057, epic: E12, title: "TrackBox scenarios v1", owner: qa, estimate: 6h }
+  - { id: T058, epic: E12, title: "TrackBox pipeline job + gate", owner: eng, estimate: 4h }
+  - { id: T059, epic: E13, title: "Architecture overview", owner: docs, estimate: 8h }
+  - { id: T060, epic: E13, title: "How-to: write an invariant", owner: docs, estimate: 4h }
+  - { id: T061, epic: E13, title: "How-to: write a scenario", owner: docs, estimate: 4h }
+  - { id: T062, epic: E13, title: "Operator guide (aliases, tux)", owner: docs, estimate: 6h }
+  - { id: T063, epic: E13, title: "Troubleshooting playbook", owner: docs, estimate: 6h }
+  - { id: T064, epic: E13, title: "Templates: PR, issue, test plan", owner: docs, estimate: 4h }
+  - { id: T065, epic: E13, title: "Onboarding checklists", owner: docs, estimate: 3h }
+  - { id: T066, epic: E13, title: "Release notes v1", owner: pm, estimate: 4h }
+  - { id: T067, epic: E13, title: "Stakeholder demo & feedback", owner: pm, estimate: 4h }
+  - { id: T068, epic: E13, title: "Adopt in pilot team", owner: pm, estimate: 8h }
+  - { id: T069, epic: E13, title: "Adopt org-wide", owner: pm, estimate: 16h }
+  - { id: T070, epic: E05, title: "Orders invariants v2 (tax/discounts)", owner: qa, estimate: 8h }
+  - { id: T071, epic: E06, title: "Retry & backoff in scenarios", owner: eng, estimate: 4h }
+  - { id: T072, epic: E08, title: "Report permalink server", owner: eng, estimate: 6h }
+  - { id: T073, epic: E07, title: "Cache node_modules in CI", owner: eng, estimate: 2h }
+  - { id: T074, epic: E09, title: "Pre-commit hooks (husky)", owner: eng, estimate: 3h }
+  - { id: T075, epic: E10, title: "Data masking for logs", owner: sec, estimate: 4h }
+
+milestones:
+  - { id: M1, title: "MVP validators running locally", done_by: [T015,T016,T017,T020], target_date: "+2weeks" }
+  - { id: M2, title: "WF invariants + scenarios v1", done_by: [T021,T024,T027,T029], target_date: "+4weeks" }
+  - { id: M3, title: "CI gate + HTML artifacts", done_by: [T033,T034,T035,T036], target_date: "+6weeks" }
+  - { id: M4, title: "Reflexia + TrackBox wired", done_by: [T051,T054,T055,T058], target_date: "+10weeks" }
+  - { id: M5, title: "Docs & pilot rollout", done_by: [T059,T062,T068], target_date: "+12weeks" }
+
+rollup:
+  totals: { tasks: 75, epics: 13, milestones: 5 }
+  critical_path: [T011,T015,T021,T027,T033,T038,T051,T055,T068]
+  estimated_hours: 345
+  estimated_weeks: 12

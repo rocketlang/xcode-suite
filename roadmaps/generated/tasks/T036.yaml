@@ -1,0 +1,634 @@
+meta:
+  id: T036
+  epic: E07
+  status: pending
+  owner: eng
+  estimate: "4h"
+  priority: P3
+  created_at: "2025-10-17T17:41:48Z"
+
+title: Task T036 - CI/CD Integration
+
+description: |
+  Complete task T036 as part of epic E07 (CI/CD Integration).
+  This task is part of the complete 75-task XCode quality framework.
+  
+  Ensure all acceptance criteria are met before marking complete.
+
+acceptance_criteria:
+  - Implement core functionality
+  - Add comprehensive tests (80%+ coverage)
+  - Update documentation
+  - Pass code review
+  - Validate in staging environment
+
+prompts:
+  - id: planning
+    label: Planning
+    text: |
+      You are an expert software architect. Create a detailed implementation plan for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      Estimate: 4 hours
+      
+      Provide:
+      1. Technical approach and architecture decisions
+         - What technologies/frameworks will you use?
+         - How will components interact?
+         - What design patterns apply?
+      
+      2. Step-by-step implementation plan
+         - Break down into logical sub-tasks
+         - Order tasks by dependencies
+         - Estimate time for each step
+      
+      3. Dependencies and prerequisites
+         - External libraries or services needed
+         - Infrastructure requirements
+         - Team dependencies
+      
+      4. Testing strategy and coverage goals
+         - Unit test approach
+         - Integration test scenarios
+         - Target coverage percentage
+      
+      5. Potential challenges and mitigation strategies
+         - Technical risks
+         - Timeline risks
+         - Solutions for each risk
+      
+      6. Success criteria and deliverables
+         - What does "done" look like?
+         - Measurable outcomes
+         - Acceptance criteria checklist
+      
+      Be specific and actionable with code examples where relevant.
+
+  - id: implementation
+    label: Implementation
+    text: |
+      You are an expert developer. Implement the following task:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      Generate complete, production-ready code including:
+      
+      1. Main implementation with proper architecture
+         - Follow SOLID principles
+         - Use appropriate design patterns
+         - Keep code modular and maintainable
+      
+      2. Error handling and input validation
+         - Validate all inputs
+         - Handle edge cases
+         - Provide meaningful error messages
+         - Log errors appropriately
+      
+      3. Logging and monitoring hooks
+         - Add strategic log points
+         - Include performance metrics
+         - Enable debugging support
+      
+      4. Clear comments and documentation
+         - Document public APIs
+         - Explain complex logic
+         - Include usage examples
+      
+      5. Configuration management
+         - Externalize configuration
+         - Support environment-specific settings
+         - Use sensible defaults
+      
+      6. Performance optimizations
+         - Identify bottlenecks
+         - Optimize critical paths
+         - Consider scalability
+      
+      Follow best practices and coding standards for the technology stack.
+      Provide working, tested code that can be deployed immediately.
+
+  - id: testing
+    label: Testing
+    text: |
+      You are a QA expert. Create comprehensive tests for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      Include the following test types:
+      
+      1. Unit tests (aim for 80%+ coverage)
+         - Test each function/method independently
+         - Mock external dependencies
+         - Cover all code paths
+         - Test return values and side effects
+      
+      2. Integration tests with dependencies
+         - Test component interactions
+         - Verify database operations
+         - Test API integrations
+         - Check data flow between layers
+      
+      3. Edge case and boundary tests
+         - Test with empty inputs
+         - Test with maximum values
+         - Test with invalid data types
+         - Test with null/undefined values
+      
+      4. Error scenario and failure tests
+         - Test error handling paths
+         - Verify error messages
+         - Test recovery mechanisms
+         - Check graceful degradation
+      
+      5. Performance/load tests (if applicable)
+         - Measure response times
+         - Test under concurrent load
+         - Identify memory leaks
+         - Check resource usage
+      
+      6. Security tests (if relevant)
+         - Test authentication/authorization
+         - Check for injection vulnerabilities
+         - Verify data sanitization
+         - Test access controls
+      
+      Provide complete test code with:
+      - Clear test names describing what's tested
+      - Proper setup and teardown
+      - Assertions that verify expected behavior
+      - Mock data and fixtures
+      - Comments explaining complex test scenarios
+
+  - id: pr-template
+    label: PR Template
+    text: |
+      Create a comprehensive pull request description for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      Use this template:
+      
+      ## Overview
+      Brief 2-3 sentence summary of what this PR accomplishes.
+      
+      ## Changes Made
+      Detailed list of modifications:
+      - Feature additions
+      - Bug fixes
+      - Refactoring
+      - Configuration changes
+      - Database migrations
+      - API changes
+      
+      ## Files Affected
+      - List major files changed
+      - Note any new files created
+      - Mention any deleted files
+      
+      ## Why These Changes
+      **Business Justification:**
+      - What problem does this solve?
+      - What value does it provide?
+      - Who requested this?
+      
+      **Technical Rationale:**
+      - Why this approach over alternatives?
+      - What trade-offs were considered?
+      - How does it fit the architecture?
+      
+      ## Testing Performed
+      **Unit Tests:**
+      - Coverage: [X]%
+      - New tests added: [number]
+      - All tests passing: ✅
+      
+      **Integration Tests:**
+      - Scenarios tested: [list]
+      - Results: [pass/fail]
+      
+      **Manual Testing:**
+      - Test scenarios executed
+      - Browsers/devices tested (if UI)
+      - Edge cases verified
+      
+      ## Screenshots/Demos
+      (If UI changes, include before/after screenshots or GIFs)
+      
+      ## Performance Impact
+      - Benchmarks if relevant
+      - Response time changes
+      - Resource usage changes
+      - Database query performance
+      
+      ## Security Considerations
+      - Any security implications?
+      - New permissions required?
+      - Data handling changes?
+      - Authentication/authorization impact?
+      
+      ## Breaking Changes
+      - List any breaking changes
+      - Migration path for users
+      - Deprecation notices
+      
+      ## Deployment Notes
+      - Any special deployment steps?
+      - Configuration changes needed?
+      - Database migrations required?
+      - Infrastructure changes?
+      
+      ## Reviewer Checklist
+      - [ ] Code quality and style compliant
+      - [ ] Test coverage adequate (>80%)
+      - [ ] Documentation updated
+      - [ ] No security vulnerabilities
+      - [ ] Performance acceptable
+      - [ ] Backward compatible (or migration plan provided)
+      - [ ] Error handling comprehensive
+      - [ ] Logging appropriate
+      
+      ## Related Issues
+      - Closes #[issue number]
+      - Related to #[issue number]
+
+  - id: code-review
+    label: Code Review
+    text: |
+      Perform a thorough code review for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      Evaluate the following aspects:
+      
+      ## 1. Code Quality & Style
+      **Readability:**
+      - Is the code easy to understand?
+      - Are variable/function names clear and descriptive?
+      - Is the code properly formatted?
+      
+      **Maintainability:**
+      - Is the code modular?
+      - Can it be easily modified?
+      - Is there excessive duplication?
+      
+      **Standards Compliance:**
+      - Does it follow team coding standards?
+      - Are naming conventions consistent?
+      - Is indentation correct?
+      
+      ## 2. Architecture & Design
+      **Design Patterns:**
+      - Are appropriate patterns used?
+      - Is the pattern implemented correctly?
+      - Could simpler approaches work?
+      
+      **Separation of Concerns:**
+      - Are responsibilities properly divided?
+      - Is business logic separated from presentation?
+      - Are data and behavior appropriately coupled?
+      
+      **Modularity:**
+      - Is code properly organized into modules?
+      - Are dependencies minimized?
+      - Can components be reused?
+      
+      ## 3. Performance
+      **Algorithmic Efficiency:**
+      - Are algorithms optimal?
+      - Are there unnecessary loops?
+      - Can operations be batched?
+      
+      **Resource Utilization:**
+      - Is memory used efficiently?
+      - Are connections properly managed?
+      - Are resources cleaned up?
+      
+      **Potential Bottlenecks:**
+      - Where might performance degrade?
+      - Are there N+1 query problems?
+      - Can operations be parallelized?
+      
+      ## 4. Security
+      **Input Validation:**
+      - Are all inputs validated?
+      - Is sanitization performed?
+      - Are types checked?
+      
+      **Authentication & Authorization:**
+      - Are permissions checked?
+      - Is access properly controlled?
+      - Are tokens/sessions secure?
+      
+      **Data Protection:**
+      - Is sensitive data encrypted?
+      - Are secrets properly managed?
+      - Is PII handled correctly?
+      
+      ## 5. Testing
+      **Coverage Adequacy:**
+      - Is coverage >80%?
+      - Are critical paths tested?
+      - Are edge cases covered?
+      
+      **Test Quality:**
+      - Are tests meaningful?
+      - Do tests actually verify behavior?
+      - Are assertions specific?
+      
+      **Edge Cases:**
+      - Are boundary conditions tested?
+      - Are error scenarios covered?
+      - Are race conditions considered?
+      
+      ## 6. Documentation
+      **Code Comments:**
+      - Are complex sections explained?
+      - Are comments up-to-date?
+      - Is there too much/too little commenting?
+      
+      **API Documentation:**
+      - Are public interfaces documented?
+      - Are parameters/returns described?
+      - Are examples provided?
+      
+      **README Updates:**
+      - Is setup documentation current?
+      - Are new features documented?
+      - Are breaking changes noted?
+      
+      ## 7. Error Handling
+      **Exception Handling:**
+      - Are exceptions caught appropriately?
+      - Are error messages helpful?
+      - Is cleanup performed on errors?
+      
+      **Edge Case Handling:**
+      - How does code handle unexpected input?
+      - Are null/undefined cases handled?
+      - Are resource limits considered?
+      
+      ## Review Feedback Format:
+      For each issue found:
+      - **Severity:** Critical / Major / Minor / Suggestion
+      - **Location:** File and line number
+      - **Issue:** What's wrong
+      - **Recommendation:** How to fix it
+      - **Example:** Show better approach if possible
+      
+      Provide constructive, specific feedback with code examples.
+
+  - id: debugging
+    label: Debugging
+    text: |
+      Provide systematic debugging guidance for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      ## Debugging Methodology:
+      
+      ### 1. Problem Analysis
+      **Reproduce the Issue:**
+      - What are the exact steps to reproduce?
+      - Does it happen consistently?
+      - What are the preconditions?
+      
+      **Identify Symptoms vs Root Cause:**
+      - What is the observable behavior?
+      - What is the expected behavior?
+      - Where does behavior diverge from expectations?
+      
+      **Gather Information:**
+      - What error messages appear?
+      - What do the logs show?
+      - What is the stack trace?
+      - What is the application state when error occurs?
+      
+      ### 2. Hypothesis Formation
+      **List Potential Causes:**
+      1. [Most likely cause based on symptoms]
+      2. [Second possibility]
+      3. [Less likely but possible]
+      
+      **Prioritize by Likelihood:**
+      - Which hypothesis explains all symptoms?
+      - Which are easiest to test?
+      - Which have occurred before?
+      
+      ### 3. Investigation Strategy
+      **Debug Tools to Use:**
+      - Debugger breakpoints
+      - Logging statements
+      - Performance profilers
+      - Network inspectors
+      - Database query analyzers
+      
+      **Logging Points to Add:**
+      - Function entry/exit
+      - Variable state at critical points
+      - Error conditions
+      - Timing information
+      
+      **Tests to Write:**
+      - Minimal reproduction test
+      - Unit test for suspected component
+      - Integration test for data flow
+      
+      ### 4. Solution Options
+      **Approach A: [Primary Solution]**
+      - Description of fix
+      - Pros: [benefits]
+      - Cons: [drawbacks]
+      - Implementation steps
+      
+      **Approach B: [Alternative]**
+      - Description of fix
+      - Pros: [benefits]
+      - Cons: [drawbacks]
+      - Implementation steps
+      
+      **Recommended Approach:**
+      [Which solution to use and why]
+      
+      ### 5. Prevention Strategies
+      **How to Prevent Recurrence:**
+      - Code changes needed
+      - Checks to add
+      - Processes to improve
+      
+      **Monitoring to Add:**
+      - What metrics to track
+      - What alerts to set
+      - What logs to keep
+      
+      **Tests to Create:**
+      - Regression test for this bug
+      - Related edge case tests
+      - Integration tests to catch similar issues
+      
+      ### 6. Verification Plan
+      **Test Cases to Verify Fix:**
+      - Original reproduction case
+      - Edge cases
+      - Performance impact
+      - Side effects on other features
+      
+      **Regression Tests Needed:**
+      - Automated tests to add
+      - Manual test scenarios
+      - Load/stress tests if relevant
+      
+      Provide specific, actionable debugging steps with code examples.
+
+  - id: documentation
+    label: Documentation
+    text: |
+      Create comprehensive documentation for:
+      
+      Task: Task T036 - CI/CD Integration
+      Epic: E07
+      
+      ## Documentation Structure:
+      
+      ### 1. Overview
+      **Purpose:**
+      - What does this component/feature do?
+      - Why was it created?
+      - When should it be used?
+      
+      **Key Concepts:**
+      - Important terminology
+      - Core abstractions
+      - Fundamental principles
+      
+      **Related Components:**
+      - What else does this interact with?
+      - What depends on this?
+      - What does this depend on?
+      
+      ### 2. Architecture
+      **High-Level Design:**
+      - Component diagram
+      - Architectural overview
+      - Design decisions and rationale
+      
+      **Component Interactions:**
+      - How components communicate
+      - Data flow between components
+      - Integration points
+      
+      **Data Flow Diagrams:**
+      - Request/response flow
+      - Data transformations
+      - State changes
+      
+      ### 3. Installation & Setup
+      **Prerequisites:**
+      - Required dependencies
+      - System requirements
+      - Access requirements
+      
+      **Installation Steps:**
+      1. Step-by-step instructions
+      2. Commands to run
+      3. Expected output
+      
+      **Initial Configuration:**
+      - Required settings
+      - Optional settings
+      - Environment-specific config
+      
+      ### 4. Usage Guide
+      **Basic Usage:**
+      - Simple examples
+      - Common use cases
+      - Quick start tutorial
+      
+      **Advanced Usage:**
+      - Complex scenarios
+      - Power user features
+      - Performance optimization tips
+      
+      **Code Examples:**
+      
+      
+      ### 5. API Reference
+      **Functions/Methods:**
+      
+      
+      **Classes/Objects:**
+      - Properties and their types
+      - Methods and their signatures
+      - Constructor parameters
+      
+      **Endpoints (if API):**
+      - URL patterns
+      - HTTP methods
+      - Request/response formats
+      - Authentication requirements
+      
+      ### 6. Configuration
+      **Available Settings:**
+      | Setting | Type | Default | Description |
+      |---------|------|---------|-------------|
+      | setting1 | string | "value" | What it controls |
+      
+      **Environment Variables:**
+      - List all environment variables
+      - Required vs optional
+      - Format and validation rules
+      
+      **Configuration Examples:**
+      
+      
+      ### 7. Troubleshooting
+      **Common Issues:**
+      
+      **Issue: [Problem description]**
+      - Symptoms: What you'll see
+      - Cause: Why it happens
+      - Solution: How to fix it
+      
+      **Error Messages:**
+      - List common error messages
+      - Explain what each means
+      - Provide resolution steps
+      
+      **Debug Techniques:**
+      - How to enable debug logging
+      - What to look for in logs
+      - Tools for debugging
+      
+      ### 8. FAQ
+      **Q: [Common question]**
+      A: [Clear answer with examples if needed]
+      
+      **Best Practices:**
+      - Recommended patterns
+      - Things to avoid
+      - Performance tips
+      
+      **Migration Guides:**
+      - Upgrading from previous versions
+      - Breaking changes
+      - Deprecation notices
+      
+      ### 9. Contributing (if open source)
+      - How to report bugs
+      - How to request features
+      - How to submit code
+      - Coding standards
+      
+      ### 10. Changelog
+      - Version history
+      - What changed in each version
+      - Upgrade instructions
+      
+      **Write clearly for both technical and non-technical audiences.**
+      **Include diagrams where helpful.**
+      **Keep examples practical and realistic.**
