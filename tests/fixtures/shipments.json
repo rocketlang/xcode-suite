@@ -1,0 +1,28 @@
+{
+  "valid": [
+    {
+      "id": "SHP-001",
+      "origin": "Los Angeles, CA",
+      "destination": "New York, NY",
+      "weight": 1500,
+      "status": "created"
+    },
+    {
+      "id": "SHP-002",
+      "origin": "Chicago, IL",
+      "destination": "Miami, FL",
+      "weight": 2500,
+      "status": "in_transit"
+    }
+  ],
+  "invalid": [
+    {
+      "id": "SHP-BAD-001",
+      "weight": -100
+    },
+    {
+      "id": "SHP-BAD-002",
+      "origin": "Test"
+    }
+  ]
+}
