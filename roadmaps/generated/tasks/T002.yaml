@@ -1,7 +1,8 @@
 meta:
+  completed_at: 2025-10-18T02:05:06Z
   id: T002
   epic: E01
-  status: pending
+  status: complete
   owner: eng
   estimate: "4h"
   priority: P3
